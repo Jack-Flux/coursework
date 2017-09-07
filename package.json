@@ -1,0 +1,33 @@
+{
+  "name": "jackflux.xyz",
+  "version": "1.0.0",
+  "description": "Cryptocurrency trading tool",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jack-Flux/jackflux.xyz.git"
+  },
+  "author": "Jack Flux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jack-Flux/jackflux.xyz/issues"
+  },
+  "homepage": "https://github.com/Jack-Flux/jackflux.xyz#readme",
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-google": "^0.9.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "streamqueue": "^1.1.1"
+  },
+  "dependencies": {
+    "express": "^4.15.4",
+    "http": "0.0.0",
+    "socket.io": "^2.0.3"
+  }
+}

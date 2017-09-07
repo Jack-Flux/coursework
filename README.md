@@ -1,2 +1,3 @@
 # jackflux.xyz
-personal website
+
+> Personal cryptocurrency tool
