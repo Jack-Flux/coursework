@@ -19,15 +19,25 @@
   "homepage": "https://github.com/Jack-Flux/jackflux.xyz#readme",
   "devDependencies": {
     "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
     "eslint-config-google": "^0.9.1",
+    "eslint-plugin-import": "^2.7.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^3.1.0",
     "streamqueue": "^1.1.1"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
+    "express-session": "^1.15.5",
     "http": "0.0.0",
+    "mongoose": "^4.11.11",
+    "mysql": "^2.14.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "socket.io": "^2.0.3"
   }
 }

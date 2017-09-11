@@ -1,0 +1,50 @@
+<% include partials/header %>
+<div class="row login">
+    <div class="col s6 offset-s3">
+        <div class="card-panel z-depth-4 hoverable">
+          <h1>LOGIN</h1>
+            <form class="col s12" id="login" action="/login" method="post">
+                <div class="row">
+                    <div class="input-field col s6 offset-s3">
+                        <input id="usernameLogin" type="text" class="validate form-control" name="username">
+                        <label for="usernameLogin">Username</label>
+                    </div>
+                    <div class="input-field col s6 offset-s3">
+                        <input id="passwordLogin" type="password" class="validate form-control" name="password">
+                        <label for="passwordLogin">Password</label>
+                    </div>
+                    <div class="col s6 offset-s3">
+                        <a href="#!" id="register">Don't have an account? Register</a>
+                    </div>
+                    <div class="col s6 offset-s3">
+                        <button id="login-btn" class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+                    </div>
+                </div>
+            </form>
+            <form class="col s12 hide" id="signup" action="/signup" method="post">
+                <div class="row">
+                    <div class="input-field col s6 offset-s3">
+                        <input id="usernameSignup" type="text" class="validate form-control" name="username">
+                        <label for="usernameSignup">Username</label>
+                    </div>
+                    <div class="input-field col s6 offset-s3">
+                        <input id="passwordSignup" type="password" class="validate form-control" name="password">
+                        <label for="passwordSignup">Password</label>
+                    </div>
+                    <div class="input-field col s6 offset-s3">
+                        <input id="confPassword" type="password" class="validate">
+                        <label for="confPassword">Confirm password</label>
+                    </div>
+                    <div class="col s6 offset-s3">
+                        <a href="#!" id="registered">Already registered? Login</a>
+                    </div>
+                    <div class="col s6 offset-s3">
+                        <button id="signup-btn" class="btn waves-effect waves-light" type="submit" name="action">Signup</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="./js/login.js"></script>
+<% include partials/footer %>

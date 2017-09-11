@@ -12,3 +12,20 @@
     <script src="./js/usersockets.js"></script>
 </head>
 <body>
+<nav class="white">
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo center">CRYPTO</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="">Markets</a></li>
+            <li><a href="">Biggest(%) +/-</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if(user){ %>
+            <li><a href="/logout">LOGOUT</a></li>
+            <% }else{ %>
+            <li><a href="/login">LOGIN</a></li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
