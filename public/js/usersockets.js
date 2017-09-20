@@ -1,5 +1,5 @@
 var socket = io();
 
-socket.on('users', (count) =>{
+socket.on('send: users', (count) => {
   $('#userCount').html(`Users online: ${count}`);
 });
