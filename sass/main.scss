@@ -1,8 +1,120 @@
+@import 'variables';
+
+::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: $grey;
+}
+
+::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+  background-color: $grey;
+}
+
+::-webkit-scrollbar-thumb{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: $red;
+}
+
+#toast-container{
+  top: 90%;
+  right: 88%;
+}
+
 #userCount{
   text-align: center;
 }
 nav{
   a{
-    color: #000 !important;
+    color: black !important;
+  }
+}
+.page{
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 1%;
+  height: calc(100% - 4% - 64px);
+  overflow-y: auto;
+
+  .markets{
+    margin-left: 2.5%;
+    width: 20%;
+    float: left;
+
+    .filters{
+      h4{
+        color: grey;
+        font-style: italic;
+        text-align: center;
+        padding-bottom: 15px;
+        border-bottom: 1px solid $grey;
+      }
+      .filter{
+        text-align: center;
+        padding-bottom: 15px;
+        border-bottom: 1px solid $grey;
+
+        h5{
+          color: grey;
+        }
+
+      }
+      .biggest{
+         select{
+           width: 30%;
+           margin-left: 35%;
+           margin-bottom: 10px;
+         }
+       }
+      .search{
+        .input-field{
+          i{
+            float: left;
+            font-size: 30px;
+            margin-top: 8px;
+          }
+          input{
+            width: calc(100% - 46px);
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  .table-wrapper{
+    overflow-y: scroll;
+    width: 75%;
+    height: 100%;
+    float: left;
+
+    h4{
+      color: grey;
+      font-style: italic;
+      text-align: center;
+      margin-bottom: 2px;
+    }
+
+    p{
+      margin-top: 0;
+      text-align: center;
+    }
+
+    #table-currencies{
+      width: 100%;
+    }
+  }
+
+
+  .about{
+    margin: 30px;
+
+    h3{
+      color: grey;
+      font-style: italic;
+    }
+    span{
+      font-size: 1.5rem;
+    }
   }
 }

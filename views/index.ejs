@@ -1,3 +1,44 @@
 <% include partials/header %>
-<h1 id="userCount">Users online: (disconnected)</h1>
+<div class="page z-depth-4">
+    <div class="table-wrapper">
+        <h4>Markets (auto-update: 15 seconds)</h4>
+        <p><a href="https://github.com/CoinCapDev/CoinCap.io">Sourced From</a></p>
+        <table id="table-currencies">
+            <thead>
+            <tr>
+                <th>Market Cap USD</th>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Price USD</th>
+                <th>% Change 24h</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="markets">
+        <div class="filters row">
+            <h4>Filters</h4>
+            <div class="filter search">
+                <h5>Search</h5>
+                <div class="input-field">
+                    <i class="material-icons">search</i>
+                    <input id="search" type="text" placeholder="Enter a currency Symbol / Name..." class="validate">
+                </div>
+            </div>
+            <div class="filter price">
+                <h5>Market Cap</h5>
+                <a class="waves-effect waves-light btn" id="mktcap_desc">DESC</a>
+                <a class="waves-effect waves-light btn" id="mktcap_asc">ASC</a>
+            </div>
+            <div class="filter biggest">
+                <h5>Biggest</h5>
+                <a class="waves-effect waves-light btn" id="big_gainers">Gainers</a>
+                <a class="waves-effect waves-light btn" id="big_losers">Losers</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./js/markets.js"></script>
 <% include partials/footer %>
