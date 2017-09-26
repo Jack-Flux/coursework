@@ -1,5 +1,4 @@
 const tableFill = (currencies) => {
-  console.log(currencies);
   $('#table-currencies > tbody').empty();
   currencies.forEach((currency) => {
     $('#table-currencies > tbody').append(`
