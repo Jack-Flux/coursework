@@ -38,7 +38,7 @@ nav{
 
   .markets{
     margin-left: 2.5%;
-    width: 20%;
+    width: 365px;
     float: left;
 
     .filters{
@@ -84,7 +84,7 @@ nav{
 
   .table-wrapper{
     overflow-y: scroll;
-    width: 75%;
+    width: calc(100% - 5% - 365px);
     height: 100%;
     float: left;
 

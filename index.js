@@ -28,6 +28,6 @@ app.use(passport.session()); // persistent login sessions
 
 require('./lib/routes')(app, passport); // sets app routing
 require('./lib/sockets')(io, events); // handles server sockets
-require('./lib/apiCalls')(events); // handles all api calls
+require('./lib/apiCalls').biggestChange(events); // handles all api calls
 
 server.listen(config.port); // starts the server on config port
