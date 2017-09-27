@@ -20,11 +20,13 @@ socket.on('send: currencyInfo', (currencies) => {
       if (currency.price !== temp.price) {
         console.log(currency.short);
         $(row).children('td').eq(3).html(`$ ${currency.price}`);
-        $(row).children('td').eq(3).css('color', `${currency.price > temp.price ? 'green' : 'red'}`);
+        let arrow = $(currency.price > temp.price ? '<i class="material-icons" style="color: green;">arrow_upward</i>' : '<i class="material-icons" style="color: red">arrow_downward</i>');
+        $(row).children('td').eq(3).append(arrow.fadeOut(6000));
       }
       if (currency.mktcap !== temp.mktcap) {
         $(row).children('td').eq(0).html(`$ ${currency.mktcap}`);
-        $(row).children('td').eq(0).css('color', `${currency.mktcap > temp.mktcap ? 'green' : 'red'}`);
+        let arrow = $(currency.mktcap > temp.mktcap ? '<i class="material-icons" style="color: green;">arrow_upward</i>' : '<i class="material-icons" style="color: red">arrow_downward</i>');
+        $(row).children('td').eq(0).append(arrow.fadeOut(6000));
       }
       if (currency.perc !== temp.perc) {
         $(row).children('td').eq(4).html(`${currency.perc}%`);
