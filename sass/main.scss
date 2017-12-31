@@ -13,7 +13,7 @@
 
 ::-webkit-scrollbar-thumb{
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-  background-color: $red;
+  background-color: $blue;
 }
 
 #toast-container{
@@ -35,6 +35,13 @@ nav{
   margin-top: 1%;
   height: calc(100% - 4% - 64px);
   overflow-y: auto;
+  
+  h4{
+    color: grey;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 2px;
+  }
 
   .markets{
     margin-left: 2.5%;
@@ -87,13 +94,6 @@ nav{
     width: calc(100% - 5% - 365px);
     height: 100%;
     float: left;
-
-    h4{
-      color: grey;
-      font-style: italic;
-      text-align: center;
-      margin-bottom: 2px;
-    }
 
     p{
       margin-top: 0;

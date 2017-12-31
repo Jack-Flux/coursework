@@ -1,3 +1,31 @@
+const filter = (query) => {
+  $('#table-currencies > tbody > tr').each((index, row) => {
+    if (
+      $(row).children('td').eq(2).html()
+        .toLowerCase() // ensure users can search regardless of capitalisation
+        .includes(query) // compares search query
+      || $(row).children('td').eq(1).html() // repeats above but for currency symbol
+        .toLowerCase()
+        .includes(query)) {
+      $(row).show();
+    } else $(row).hide();
+  });
+  $('.table-wrapper').scrollTop(0); // resets user scrollbar to improve user experience
+};
+
+let query = '';
+$(document).ready(() => {
+  // search filter for markets
+  $('#search').on('input', () => {
+    query = $('#search').val().toLowerCase();
+    filter(query);
+  });
+  $('#mktcap_desc').click(() => tableFill(storedCurrencies));
+  $('#mktcap_asc').click(() => bubbleSort('mktcap', (a, b) => b < a));
+  $('#big_gainers').click(() => bubbleSort('perc', (a, b) => b > a));
+  $('#big_losers').click(() => bubbleSort('perc', (a, b) => b < a));
+});
+
 const tableFill = (currencies) => {
   $('#table-currencies > tbody').empty();
   currencies.forEach((currency) => {
@@ -6,11 +34,12 @@ const tableFill = (currencies) => {
         <td>$ ${currency.mktcap.toLocaleString()}</td>
         <td>${currency.short}</td>
         <td>${currency.long}</td>
-        <td>$ ${currency.price}</td>
-        <td style="color: ${(currency.perc >= 0) ? 'green' : 'red'};">${currency.perc} %</td>
+        <td>$ ${currency.price.toLocaleString()}</td>
+        <td style="color: ${(currency.perc >= 0) ? 'green' : 'red'};">${currency.perc.toLocaleString()} %</td>
     </tr>
     `);
   });
+  filter(query);
   $('.table-wrapper').scrollTop(0); // resets user scrollbar to improve user experience
 };
 
@@ -31,24 +60,10 @@ const bubbleSort = (key, operation) => {
   tableFill(tempCurrencies);
 };
 
-$(document).ready(() => {
-  // search filter for markets
-  $('#search').on('input', () => {
-    const query = $('#search').val().toLowerCase();
-    $('#table-currencies > tbody > tr').each((index, row) => {
-      if (
-        $(row).children('td').eq(2).html()
-          .toLowerCase() // ensure users can search regardless of capitalisation
-          .includes(query) // compares search query
-        || $(row).children('td').eq(1).html() // repeats above but for currency symbol
-          .toLowerCase()
-          .includes(query)) {
-        $(row).show();
-      } else $(row).hide();
-    });
-  });
-  $('#mktcap_desc').click(() => tableFill(storedCurrencies));
-  $('#mktcap_asc').click(() => bubbleSort('mktcap', (a, b) => b < a));
-  $('#big_gainers').click(() => bubbleSort('perc', (a, b) => b > a));
-  $('#big_losers').click(() => bubbleSort('perc', (a, b) => b < a));
+const socket = io();
+let storedCurrencies = [];
+socket.on('send: currencyInfo', (currencies) => {
+  console.log('Currency info received');
+  tableFill(currencies);
+  storedCurrencies = currencies;
 });

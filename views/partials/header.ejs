@@ -9,8 +9,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <!-- User CSS -->
     <link rel="stylesheet" href="./css/main.css">
-    <!-- User Javascript -->
-    <script src="./js/usersockets.js"></script>
 </head>
 <body>
 <nav class="white">
@@ -23,7 +21,7 @@
         </ul>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if(user){ %>
-            <li><a href="/wallet">Wallet</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
             <li><a href="/logout">LOGOUT</a></li>
             <% }else{ %>
             <li><a href="/login">LOGIN</a></li>

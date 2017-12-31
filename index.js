@@ -5,14 +5,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const EventEmitter = require('events');
 const config = require('./config.json');
-const db = require('./lib/config/db');
 
 const app = express();
 const events = new EventEmitter();
 events.setMaxListeners(0);
-const User = db.model('User');
 
-require('./lib/config/passportSetup')(passport, User);
+require('./lib/config/passportSetup')(passport);
 
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -28,6 +26,5 @@ app.use(passport.session()); // persistent login sessions
 
 require('./lib/routes')(app, passport); // sets app routing
 require('./lib/sockets')(io, events); // handles server sockets
-require('./lib/apiCalls').biggestChange(events); // handles all api calls
 
-server.listen(config.port); // starts the server on config port
+server.listen(config.port, 'localhost'); // starts the server on config port
