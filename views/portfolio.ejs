@@ -2,18 +2,35 @@
   <div class="page z-depth-4">
     <h4>Portfolio (auto-save)</h4>
     <div class="portfolio row">
-      <div class="col s6 offset-s3">
-        <div class="input-field">
-          <input id="symbol" type="text" class="validate">
-          <label for="symbol">Symbol</label>
+      <div class="holdings col s10 offset-s1">
+        <h6>Total holdings: <span id="total-holdings">$ 0.00 | ₿ 0.00000000</span></h6>
+        <div class="table-wrapper">
+          <table id="table-holdings" class="striped col">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Name</th>
+              <th>Price (USD)</th>
+              <th>% Change 24h</th>
+              <th>Holdings (USD)</th>
+              <th>Holdings (BTC)</th>
+              <th>Holdings</th>
+              <th>+</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
         </div>
-        <div class="input-field">
-          <input id="amount" type="text" class="validate">
-          <label for="amount">Amount</label>
+        <div class="filters">
+          <input id="searchHoldings" class="col s8" placeholder="Search your holdings by symbol / name here ...">
+          <div class="col s4 no-hol">
+            <input type="checkbox" class="filled-in" id="no-holdings" checked="" />
+            <label for="no-holdings">Hide no holdings</label>
+          </div>
         </div>
-        <button id="add" class="btn waves-effect waves-light">Add</button>
-        <button id="remove" class="btn waves-effect waves-light">Remove</button>
       </div>
     </div>
   </div>
+<script src="./js/portfolio.js"></script>
 <% include partials/footer %>

@@ -1,6 +1,9 @@
 {
-  "port": 3000,
+  "port": 8080,
   "timers": {
     "markets": 60
+  },
+  "session": {
+    "secret": "test"
   }
 }

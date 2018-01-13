@@ -10,7 +10,7 @@ const filter = (query) => {
       $(row).show();
     } else $(row).hide();
   });
-  $('.table-wrapper').scrollTop(0); // resets user scrollbar to improve user experience
+  $('.market-wrapper').scrollTop(0); // resets user scrollbar to improve user experience
 };
 
 let query = '';
@@ -40,7 +40,7 @@ const tableFill = (currencies) => {
     `);
   });
   filter(query);
-  $('.table-wrapper').scrollTop(0); // resets user scrollbar to improve user experience
+  $('.market-wrapper').scrollTop(0); // resets user scrollbar to improve user experience
 };
 
 const bubbleSort = (key, operation) => {
