@@ -23,7 +23,6 @@ require('./lib/config/passportSetup')(passport);
 
 app.set('view engine', 'ejs'); // allows the use of EJS as the frontend template language
 app.use(express.static(`${__dirname}/public`)); // expresses all content in the public folder to the client
-app.use(cookieParser());
 app.use(bodyParser());
 
 app.use(passport.initialize());

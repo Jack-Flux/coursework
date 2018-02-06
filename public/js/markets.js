@@ -63,7 +63,18 @@ const bubbleSort = (key, operation) => {
 const socket = io();
 let storedCurrencies = [];
 socket.on('send: currencyInfo', (currencies) => {
-  console.log('Currency info received');
   tableFill(currencies);
   storedCurrencies = currencies;
+});
+
+const tradeSocket = io.connect('https://coincap.io');
+tradeSocket.on('trades', (tradeMsg) => {
+  const { msg } = tradeMsg;
+  const priceOld = $(`#table-currencies > tbody > tr[currency-id="${msg.short}"]`).children('td').eq(3).html()
+    .replace('$ ', '');
+  const priceNew = msg.price;
+  const row = $(`#table-currencies > tbody > tr[currency-id="${msg.short}"]`);
+  row.children('td').eq(0).html(`$ ${msg.mktcap.toLocaleString()}`);
+  row.children('td').eq(3).html(`$ ${msg.price.toLocaleString()}`);
+  row.children('td').eq(4).html(`${msg.perc.toLocaleString()} %`);
 });

@@ -1,5 +1,9 @@
 @import 'variables';
 
+body{
+  overflow: hidden;
+}
+
 ::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   background-color: $grey;
@@ -30,15 +34,20 @@ nav{
   }
   img{
     height: 80%;
+    margin: 0 5px;
     vertical-align: middle;
+  }
+  .brand-logo{
+    height: 100%;
+    font-size: 1rem;
   }
 }
 .page{
   width: 95%;
   margin-left: 2.5%;
   margin-top: 1%;
-  height: calc(100% - 4% - 64px);
-  overflow-y: auto;
+  height: calc(100vh - 64px - 4vh);
+  overflow: hidden;
   
   h4{
     color: grey;
