@@ -53,12 +53,15 @@ const filter = (query) => {
 const addBalances = (balances) => {
   let total = 0;
   Object.keys(balances).forEach((currency) => {
-    total += balances[currency];
-    let price = $(`#table-holdings > tbody > tr[currency-id='${currency}'`).children('td').eq(2).html().split(" ")[1];
-    console.log(localeToFloat(price));
+    const price = parseFloat($(`#table-holdings > tbody > tr[currency-id='${currency}'`).children('td').eq(2).html()
+      .replace(',', '')
+      .split(' ')[1]);
+    total += price * balances[currency];
+    console.log(price, currency, balances[currency]);
     $(`#table-holdings > tbody > tr[currency-id='${currency}'`).children('td').eq(4).html(`$ ${(balances[currency] * price).toFixed(2)}`);
+    $(`#table-holdings > tbody > tr[currency-id='${currency}'`).children('td').eq(5).html(((balances[currency] * price) / BTC).toFixed(8));
     $(`#table-holdings > tbody > tr[currency-id='${currency}'`).children('td').eq(6).html(balances[currency].toFixed(8));
-    $('#total-holdings').html(`$ ${(total * BTC).toLocaleString()} | ₿ ${total.toFixed(8)}`);
+    $('#total-holdings').html(`$ ${total.toLocaleString()} | ₿ ${(total / BTC).toFixed(8)}`);
   });
 };
 
