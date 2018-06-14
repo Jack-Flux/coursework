@@ -1,4 +1,4 @@
-// Functions 
+// Functions
 let BTC = 0.00;
 const tableFill = (currencies) => {
   currencies.forEach((currency) => {
@@ -32,7 +32,6 @@ const tableFill = (currencies) => {
       });
     });
   });
-  addBalances(balances);
 };
 
 const filter = (query) => {
@@ -50,6 +49,7 @@ const filter = (query) => {
   $('.table-wrapper').scrollTop(0); // resets user scrollbar to improve user experience
 };
 
+let currentBalances = {};
 const addBalances = (balances) => {
   let total = 0;
   Object.keys(balances).forEach((currency) => {
@@ -57,12 +57,16 @@ const addBalances = (balances) => {
       .replace(',', '')
       .split(' ')[1]);
     total += price * balances[currency];
-    console.log(price, currency, balances[currency]);
+    if (currentBalances[currency] === balances[currency]) {
+      return;
+    }
     $(`#table-holdings > tbody > tr[currency-id='${currency}'`).children('td').eq(4).html(`$ ${(balances[currency] * price).toFixed(2)}`);
     $(`#table-holdings > tbody > tr[currency-id='${currency}'`).children('td').eq(5).html(((balances[currency] * price) / BTC).toFixed(8));
     $(`#table-holdings > tbody > tr[currency-id='${currency}'`).children('td').eq(6).html(balances[currency].toFixed(8));
     $('#total-holdings').html(`$ ${total.toLocaleString()} | ₿ ${(total / BTC).toFixed(8)}`);
+    M.toast({ html: `${currency} holdings updated to ${balances[currency]}` });
   });
+  currentBalances = balances;
 };
 
 // JQuery
@@ -98,11 +102,12 @@ socket.on('send: currencyInfo', (currencies) => {
   tableFill(currencies);
 });
 
-let balances = {};
 socket.on('send: balances', (data) => {
   if (!data) return;
   const { err, message } = data;
-  balances = data.balances;
-  if (err) return;
-  addBalances(balances);
+  if (err) {
+    M.toast({ html: message });
+    return;
+  }
+  addBalances(data.balances);
 });
